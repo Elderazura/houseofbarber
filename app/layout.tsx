@@ -9,6 +9,8 @@ import "./globals.css";
 import MotionProvider from "@/components/providers/MotionProvider";
 import LenisProvider from "@/components/providers/LenisProvider";
 import Navigation from "@/components/layout/Navigation";
+import Footer from "@/components/layout/Footer";
+import FloatingBookButton from "@/components/FloatingBookButton";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -79,6 +81,8 @@ export default function RootLayout({
           <LenisProvider>
             <Navigation />
             {children}
+            <Footer />
+            <FloatingBookButton />
           </LenisProvider>
         </MotionProvider>
       </body>
