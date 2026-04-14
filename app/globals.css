@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --color-hob-black: #0D0D0D;
+  --color-hob-dark: #1A1A1A;
+  --color-hob-charcoal: #2C2C2C;
+  --color-hob-gold: #C9A84C;
+  --color-hob-gold-lt: #E8C96A;
+  --color-hob-cream: #F5EFE0;
+  --color-hob-white: #FAF7F2;
+  --color-hob-muted: #888888;
+
+  --font-display: var(--font-playfair);
+  --font-heading: var(--font-cormorant);
+  --font-label: var(--font-josefin);
+  --font-body: var(--font-dm-sans);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background-color: #0D0D0D;
+  color: #FAF7F2;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0D0D0D; }
+::-webkit-scrollbar-thumb { background: #C9A84C; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #E8C96A; }
+
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #C9A84C, transparent);
+}
+
+.bento-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.bento-card:hover {
+  box-shadow: 0 0 0 1px rgba(201, 168, 76, 0.35);
+  transform: scale(1.01);
+}
+
+.bento-card-gold {
+  background: rgba(201, 168, 76, 0.08);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 8px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.bento-card-gold:hover {
+  box-shadow: 0 0 0 1px rgba(201, 168, 76, 0.5);
+  transform: scale(1.01);
+}
+
+.section-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px)  { .section-container { padding: 0 1.5rem; } }
+@media (min-width: 1024px) { .section-container { padding: 0 2rem; } }
