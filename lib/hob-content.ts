@@ -41,11 +41,10 @@ export type GalleryImage = {
 
 export const NAV_ITEMS = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Locations", href: "/locations" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Book Now", href: "/booking" },
+  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -259,17 +258,57 @@ const gallery = [
 ];
 
 function categoriesForIndex(i: number): GalleryCategory[] {
-  if (i < 12) return ["all", "haircuts", "interior"];
-  if (i < 20) return ["all", "beards", "haircuts"];
-  if (i < 26) return ["all", "color", "haircuts"];
+  if (i < 5)  return ["all", "haircuts"];
+  if (i < 10) return ["all", "beards"];
+  if (i < 14) return ["all", "interior"];
+  if (i < 20) return ["all", "haircuts", "beards"];
+  if (i < 26) return ["all", "color"];
   if (i < 30) return ["all", "interior"];
-  return ["all", "kids", "interior"];
+  return ["all", "kids"];
 }
 
-export const GALLERY_IMAGES: GalleryImage[] = gallery.map((file, i) => ({
-  id: file.replace(".jpg", ""),
-  src: `/assets/hob/gallery/${file}`,
-  alt: `House of Barber gallery image ${file}`,
-  categories: categoriesForIndex(i),
-}));
+const galleryAltText: Record<string, string> = {
+  "1":  "Men's precision haircut at House of Barber, Abu Dhabi",
+  "2":  "Classic fade and taper at House of Barber salon",
+  "3":  "Men's grooming session — cut and style, Abu Dhabi",
+  "4":  "Sharp scissor cut finish at House of Barber",
+  "5":  "Modern textured crop at House of Barber, UAE",
+  "6":  "Beard shaping and line-up at House of Barber",
+  "7":  "Full beard grooming and hot towel shave",
+  "8":  "Beard design and contour at House of Barber",
+  "9":  "Beard trim and styling session, Abu Dhabi",
+  "10": "Classic straight-razor shave at House of Barber",
+  "11": "Premium barber chair and salon interior, House of Barber",
+  "13": "House of Barber salon interior — warm lighting and classic decor",
+  "14": "Barber station detail at House of Barber, Abu Dhabi",
+  "15": "Men's haircut in progress at House of Barber",
+  "16": "Fade haircut side profile at House of Barber",
+  "17": "Clean taper fade by House of Barber stylist",
+  "18": "Men's cut and beard combo service, Abu Dhabi",
+  "19": "Precision cut and finish at House of Barber",
+  "20": "Hair texture and styling result at House of Barber",
+  "21": "Hair colour application at House of Barber",
+  "22": "Women's hair colour and highlights, House of Barber",
+  "23": "Balayage colour result at House of Barber salon",
+  "27": "Hair colour treatment in progress, Abu Dhabi",
+  "28": "Vibrant hair colour finish at House of Barber",
+  "30": "House of Barber lounge and waiting area",
+  "31": "Salon interior detail — House of Barber UAE",
+  "32": "Kids' haircut at House of Barber family salon",
+  "33": "Children's cut and styling, House of Barber",
+  "34": "Fun kids' haircut at House of Barber",
+  "35": "Kids' grooming service at House of Barber, Abu Dhabi",
+  "36": "House of Barber premium salon experience",
+  "37": "House of Barber — family salon and cafe, WTC Abu Dhabi",
+};
+
+export const GALLERY_IMAGES: GalleryImage[] = gallery.map((file, i) => {
+  const id = file.replace(".jpg", "");
+  return {
+    id,
+    src: `/assets/hob/gallery/${file}`,
+    alt: galleryAltText[id] ?? `House of Barber gallery — ${file}`,
+    categories: categoriesForIndex(i),
+  };
+});
 
