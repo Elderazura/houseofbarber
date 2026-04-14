@@ -8,6 +8,7 @@ import {
 import "./globals.css";
 import MotionProvider from "@/components/providers/MotionProvider";
 import LenisProvider from "@/components/providers/LenisProvider";
+import Navigation from "@/components/layout/Navigation";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -76,6 +77,7 @@ export default function RootLayout({
       <body className="font-[family-name:var(--font-dm-sans)] bg-hob-black text-hob-white">
         <MotionProvider>
           <LenisProvider>
+            <Navigation />
             {children}
           </LenisProvider>
         </MotionProvider>
