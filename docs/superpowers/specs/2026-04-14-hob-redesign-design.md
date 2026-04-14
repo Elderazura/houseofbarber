@@ -189,7 +189,7 @@ Desktop        → show both equally with equal prominence
 ```
 
 Links:
-- App Store: Sourced from the existing `houseofbarber.com` page source — confirm exact URL before build (Play Store ID confirms it's `com.saloon.hob`)
+- App Store: `https://apps.apple.com/in/app/house-of-barber/id1571444397`
 - Play Store: `https://play.google.com/store/apps/details?id=com.saloon.hob`
 
 Section copy: *"Book smarter. Get the app."* — manages appointments, explore services, find your nearest location.
