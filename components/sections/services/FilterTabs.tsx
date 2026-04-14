@@ -2,18 +2,20 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { ServiceCategory } from "@/lib/hob-content";
-
-const tabs: { label: string; value: "all" | ServiceCategory }[] = [
-  { label: "All",   value: "all" },
-  { label: "Men",   value: "men" },
-  { label: "Women", value: "women" },
-  { label: "Kids",  value: "kids" },
-];
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function FilterTabs() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const current = (searchParams.get("cat") ?? "all") as "all" | ServiceCategory;
+  const { t } = useLanguage();
+
+  const tabs: { label: string; value: "all" | ServiceCategory }[] = [
+    { label: t.servicesPage.filterAll,   value: "all" },
+    { label: t.servicesPage.filterMen,   value: "men" },
+    { label: t.servicesPage.filterWomen, value: "women" },
+    { label: t.servicesPage.filterKids,  value: "kids" },
+  ];
 
   function setFilter(value: string) {
     const params = new URLSearchParams(searchParams.toString());

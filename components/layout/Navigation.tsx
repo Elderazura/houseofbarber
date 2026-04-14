@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { m, AnimatePresence } from "framer-motion";
 import { NAV_ITEMS } from "@/lib/hob-content";
 import { Menu, X } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -13,6 +14,7 @@ export default function Navigation() {
   const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const lastY = useRef(0);
+  const { t, toggleLocale } = useLanguage();
 
   useEffect(() => {
     function onScroll() {
@@ -62,12 +64,21 @@ export default function Navigation() {
             ))}
           </nav>
 
-          <Link
-            href="#app"
-            className="hidden md:inline-flex items-center px-4 py-2 border border-hob-gold text-hob-gold font-[family-name:var(--font-josefin)] text-[9px] tracking-[0.2em] uppercase hover:bg-hob-gold hover:text-hob-black transition-all duration-200"
-          >
-            Book
-          </Link>
+          <div className="hidden md:flex items-center gap-3">
+            <button
+              onClick={toggleLocale}
+              className="px-3 py-1.5 border border-hob-muted/40 text-hob-muted font-[family-name:var(--font-josefin)] text-[9px] tracking-[0.2em] uppercase hover:border-hob-gold hover:text-hob-gold transition-all duration-200"
+              aria-label="Toggle language"
+            >
+              {t.nav.langToggle}
+            </button>
+            <Link
+              href="#app"
+              className="inline-flex items-center px-4 py-2 border border-hob-gold text-hob-gold font-[family-name:var(--font-josefin)] text-[9px] tracking-[0.2em] uppercase hover:bg-hob-gold hover:text-hob-black transition-all duration-200"
+            >
+              {t.nav.book}
+            </Link>
+          </div>
 
           <button
             onClick={() => setMobileOpen((v) => !v)}
@@ -115,8 +126,20 @@ export default function Navigation() {
                   href="#app"
                   className="mt-4 inline-flex items-center px-8 py-3 border border-hob-gold text-hob-gold font-[family-name:var(--font-josefin)] text-xs tracking-widest uppercase"
                 >
-                  Book via App
+                  {t.nav.bookViaApp}
                 </Link>
+              </m.div>
+              <m.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: (NAV_ITEMS.length + 1) * 0.05, duration: 0.3 }}
+              >
+                <button
+                  onClick={() => { toggleLocale(); setMobileOpen(false); }}
+                  className="px-6 py-2 border border-hob-muted/40 text-hob-muted font-[family-name:var(--font-josefin)] text-xs tracking-widest uppercase hover:border-hob-gold hover:text-hob-gold transition-all duration-200"
+                >
+                  {t.nav.langToggle}
+                </button>
               </m.div>
             </nav>
           </m.div>

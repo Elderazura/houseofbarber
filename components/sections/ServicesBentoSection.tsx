@@ -1,49 +1,54 @@
+"use client";
+
 import Link from "next/link";
 import ScrollReveal from "@/components/motion/ScrollReveal";
-
-const categories = [
-  {
-    key: "men",
-    label: "Men's",
-    title: "Grooming",
-    description: "Precision cuts, beard design, hot-towel shaves and more. The works.",
-    count: 6,
-    href: "/services?cat=men",
-    span: "md:col-span-2 md:row-span-2",
-    gold: true,
-  },
-  {
-    key: "women",
-    label: "Women's",
-    title: "Salon",
-    description: "Cuts, colour, styling, and waxing for every occasion.",
-    count: 8,
-    href: "/services?cat=women",
-    span: "",
-    gold: false,
-  },
-  {
-    key: "kids",
-    label: "Kids'",
-    title: "Fun Cuts",
-    description: "Gentle, fun cuts for little ones. We make it enjoyable.",
-    count: 2,
-    href: "/services?cat=kids",
-    span: "",
-    gold: false,
-  },
-] as const;
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function ServicesBentoSection() {
+  const { t } = useLanguage();
+
+  const categories = [
+    {
+      key: "men",
+      label: t.services.men.label,
+      title: t.services.men.title,
+      description: t.services.men.description,
+      count: t.services.men.count,
+      href: "/services?cat=men",
+      span: "md:col-span-2 md:row-span-2",
+      gold: true,
+    },
+    {
+      key: "women",
+      label: t.services.women.label,
+      title: t.services.women.title,
+      description: t.services.women.description,
+      count: t.services.women.count,
+      href: "/services?cat=women",
+      span: "",
+      gold: false,
+    },
+    {
+      key: "kids",
+      label: t.services.kids.label,
+      title: t.services.kids.title,
+      description: t.services.kids.description,
+      count: t.services.kids.count,
+      href: "/services?cat=kids",
+      span: "",
+      gold: false,
+    },
+  ];
+
   return (
     <section className="py-20 bg-hob-black">
       <div className="section-container">
         <ScrollReveal preset="fadeUp" className="mb-12">
           <span className="font-[family-name:var(--font-josefin)] text-[10px] tracking-[0.3em] text-hob-gold uppercase block mb-3">
-            What we offer
+            {t.services.eyebrow}
           </span>
           <h2 className="font-[family-name:var(--font-cormorant)] text-4xl md:text-5xl font-light text-hob-white">
-            For the whole family.
+            {t.services.heading}
           </h2>
         </ScrollReveal>
 
@@ -69,10 +74,10 @@ export default function ServicesBentoSection() {
                 </div>
                 <div className="flex items-center justify-between mt-6">
                   <span className="font-[family-name:var(--font-josefin)] text-[9px] tracking-widest text-hob-muted uppercase">
-                    {cat.count} services
+                    {cat.count}
                   </span>
                   <span className="font-[family-name:var(--font-josefin)] text-[9px] tracking-widest text-hob-gold uppercase group-hover:translate-x-1 transition-transform">
-                    Explore →
+                    {t.services.explore}
                   </span>
                 </div>
               </Link>
@@ -85,7 +90,7 @@ export default function ServicesBentoSection() {
             href="/services"
             className="font-[family-name:var(--font-josefin)] text-[10px] tracking-widest text-hob-muted hover:text-hob-gold uppercase transition-colors"
           >
-            View all 22 services →
+            {t.services.viewAll}
           </Link>
         </ScrollReveal>
       </div>

@@ -1,9 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import ScrollReveal from "@/components/motion/ScrollReveal";
 import { GALLERY_IMAGES } from "@/lib/hob-content";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function GalleryTeaserSection() {
+  const { t } = useLanguage();
   const preview = GALLERY_IMAGES.slice(0, 6);
 
   return (
@@ -12,17 +16,17 @@ export default function GalleryTeaserSection() {
         <ScrollReveal preset="fadeUp" className="mb-12 flex justify-between items-end">
           <div>
             <span className="font-[family-name:var(--font-josefin)] text-[10px] tracking-[0.3em] text-hob-gold uppercase block mb-3">
-              The work
+              {t.gallery.eyebrow}
             </span>
             <h2 className="font-[family-name:var(--font-cormorant)] text-4xl md:text-5xl font-light text-hob-white">
-              See it for yourself.
+              {t.gallery.heading}
             </h2>
           </div>
           <Link
             href="/gallery"
             className="hidden md:inline font-[family-name:var(--font-josefin)] text-[10px] tracking-widest text-hob-muted hover:text-hob-gold uppercase transition-colors"
           >
-            Full gallery →
+            {t.gallery.viewAll}
           </Link>
         </ScrollReveal>
 
@@ -55,7 +59,7 @@ export default function GalleryTeaserSection() {
             href="/gallery"
             className="font-[family-name:var(--font-josefin)] text-[10px] tracking-widest text-hob-muted hover:text-hob-gold uppercase transition-colors"
           >
-            Full gallery →
+            {t.gallery.viewAll}
           </Link>
         </div>
       </div>

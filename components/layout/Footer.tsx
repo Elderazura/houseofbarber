@@ -1,8 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { UAE_LOCATIONS, INDIA_LOCATIONS, NAV_ITEMS } from "@/lib/hob-content";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
   const waUrl = buildWhatsAppUrl("Hi House of Barber, I'd like to make an enquiry.");
 
   return (
@@ -14,8 +18,7 @@ export default function Footer() {
               H O B
             </div>
             <p className="text-sm text-hob-muted leading-relaxed max-w-xs">
-              Premium family salon and barbershop. Precision grooming for men,
-              women, and kids across Abu Dhabi and India.
+              {t.footer.tagline}
             </p>
             <div className="flex gap-4 mt-6">
               <a
@@ -47,7 +50,7 @@ export default function Footer() {
 
           <div>
             <p className="font-[family-name:var(--font-josefin)] text-[9px] tracking-widest text-hob-gold uppercase mb-4">
-              UAE Locations
+              {t.footer.uaeLocations}
             </p>
             <ul className="space-y-2">
               {UAE_LOCATIONS.map((loc) => (
@@ -65,7 +68,7 @@ export default function Footer() {
 
           <div>
             <p className="font-[family-name:var(--font-josefin)] text-[9px] tracking-widest text-hob-gold uppercase mb-4">
-              India Locations
+              {t.footer.indiaLocations}
             </p>
             <ul className="space-y-2 mb-8">
               {INDIA_LOCATIONS.map((loc) => (
@@ -80,7 +83,7 @@ export default function Footer() {
               ))}
             </ul>
             <p className="font-[family-name:var(--font-josefin)] text-[9px] tracking-widest text-hob-gold uppercase mb-4">
-              Explore
+              {t.footer.explore}
             </p>
             <ul className="space-y-2">
               {NAV_ITEMS.map((item) => (
@@ -101,10 +104,10 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-3">
           <p className="font-[family-name:var(--font-josefin)] text-[9px] tracking-widest text-hob-muted uppercase">
-            © {new Date().getFullYear()} House of Barber. All rights reserved.
+            © {new Date().getFullYear()} House of Barber. {t.footer.allRights}
           </p>
           <p className="font-[family-name:var(--font-josefin)] text-[9px] tracking-widest text-hob-muted uppercase">
-            The Chair Has Always Been Yours.
+            {t.footer.taglineBottom}
           </p>
         </div>
       </div>

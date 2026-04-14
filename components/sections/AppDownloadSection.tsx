@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import { m } from "framer-motion";
 import { detectPlatform, APP_STORE_URL, PLAY_STORE_URL } from "@/lib/device";
 import ScrollReveal from "@/components/motion/ScrollReveal";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function AppDownloadSection() {
   const [platform, setPlatform] = useState<"ios" | "android" | "desktop">("desktop");
+  const { t } = useLanguage();
 
   useEffect(() => {
     setPlatform(detectPlatform());
@@ -18,14 +20,13 @@ export default function AppDownloadSection() {
         <div className="max-w-2xl mx-auto text-center">
           <ScrollReveal preset="fadeUp">
             <span className="font-[family-name:var(--font-josefin)] text-[10px] tracking-[0.3em] text-hob-gold uppercase block mb-4">
-              Book smarter
+              {t.app.eyebrow}
             </span>
             <h2 className="font-[family-name:var(--font-cormorant)] text-4xl md:text-5xl font-light text-hob-white mb-4">
-              Get the app.
+              {t.app.heading}
             </h2>
             <p className="text-sm text-hob-muted leading-relaxed mb-10">
-              Manage appointments, explore services, and find your nearest
-              House of Barber — all from your pocket.
+              {t.app.body}
             </p>
           </ScrollReveal>
 
@@ -43,9 +44,9 @@ export default function AppDownloadSection() {
                 }`}
               >
                 <span className="font-[family-name:var(--font-josefin)] text-[8px] tracking-widest uppercase mb-1">
-                  Download on the
+                  {t.app.appStoreLabel}
                 </span>
-                <span className="font-[family-name:var(--font-cormorant)] text-xl">App Store</span>
+                <span className="font-[family-name:var(--font-cormorant)] text-xl">{t.app.appStoreName}</span>
               </m.a>
 
               <m.a
@@ -60,9 +61,9 @@ export default function AppDownloadSection() {
                 }`}
               >
                 <span className="font-[family-name:var(--font-josefin)] text-[8px] tracking-widest uppercase mb-1">
-                  Get it on
+                  {t.app.playStoreLabel}
                 </span>
-                <span className="font-[family-name:var(--font-cormorant)] text-xl">Google Play</span>
+                <span className="font-[family-name:var(--font-cormorant)] text-xl">{t.app.playStoreName}</span>
               </m.a>
             </div>
           </ScrollReveal>

@@ -1,8 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import ScrollReveal from "@/components/motion/ScrollReveal";
 import { UAE_LOCATIONS } from "@/lib/hob-content";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function LocationsTeaserSection() {
+  const { t } = useLanguage();
   const featured = UAE_LOCATIONS.slice(0, 2);
 
   return (
@@ -10,10 +14,12 @@ export default function LocationsTeaserSection() {
       <div className="section-container">
         <ScrollReveal preset="fadeUp" className="mb-12">
           <span className="font-[family-name:var(--font-josefin)] text-[10px] tracking-[0.3em] text-hob-gold uppercase block mb-3">
-            Find us
+            {t.locations.eyebrow}
           </span>
           <h2 className="font-[family-name:var(--font-cormorant)] text-4xl md:text-5xl font-light text-hob-white">
-            UAE & India.
+            {t.locations.heading.split("\n").map((line, i, arr) => (
+              <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+            ))}
           </h2>
         </ScrollReveal>
 
@@ -26,7 +32,7 @@ export default function LocationsTeaserSection() {
               >
                 <div>
                   <span className="font-[family-name:var(--font-josefin)] text-[9px] tracking-widest text-hob-gold uppercase block mb-2">
-                    Abu Dhabi
+                    {t.locations.uae}
                   </span>
                   <h3 className="font-[family-name:var(--font-cormorant)] text-2xl font-light text-hob-white mb-2">
                     {loc.name}
@@ -36,7 +42,7 @@ export default function LocationsTeaserSection() {
                   </p>
                 </div>
                 <span className="font-[family-name:var(--font-josefin)] text-[9px] tracking-widest text-hob-gold uppercase mt-6 group-hover:translate-x-1 transition-transform inline-block">
-                  View location →
+                  {t.locations.viewLocation}
                 </span>
               </Link>
             </ScrollReveal>
@@ -49,7 +55,7 @@ export default function LocationsTeaserSection() {
             >
               <div>
                 <span className="font-[family-name:var(--font-josefin)] text-[9px] tracking-widest text-hob-gold uppercase block mb-2">
-                  All locations
+                  {t.locations.eyebrow}
                 </span>
                 <h3 className="font-[family-name:var(--font-cormorant)] text-2xl font-light text-hob-white mb-2">
                   7 Branches
@@ -59,7 +65,7 @@ export default function LocationsTeaserSection() {
                 </p>
               </div>
               <span className="font-[family-name:var(--font-josefin)] text-[9px] tracking-widest text-hob-gold uppercase mt-6">
-                See all →
+                {t.locations.viewAll}
               </span>
             </Link>
           </ScrollReveal>

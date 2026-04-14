@@ -4,6 +4,7 @@ import {
   Cormorant_Garamond,
   DM_Sans,
   Josefin_Sans,
+  Noto_Sans_Arabic,
 } from "next/font/google";
 import "./globals.css";
 import MotionProvider from "@/components/providers/MotionProvider";
@@ -11,6 +12,8 @@ import LenisProvider from "@/components/providers/LenisProvider";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import FloatingBookButton from "@/components/FloatingBookButton";
+import { LanguageProvider } from "@/lib/i18n/LanguageContext";
+import DirApplier from "@/lib/i18n/DirApplier";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -40,6 +43,13 @@ const josefin = Josefin_Sans({
   display: "swap",
 });
 
+const notoArabic = Noto_Sans_Arabic({
+  subsets: ["arabic"],
+  weight: ["300", "400", "500"],
+  variable: "--font-arabic",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.houseofbarber.com"),
   title: {
@@ -60,7 +70,7 @@ export const metadata: Metadata = {
     siteName: "House of Barber",
     type: "website",
     locale: "en_US",
-    images: [{ url: "/assets/hob/brand/hob-brand-1.png", width: 1200, height: 630 }],
+    images: [{ url: "/assets/hob/brand/hob-brand-identity-1.png", width: 1200, height: 630 }],
   },
   twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },
@@ -74,17 +84,20 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${cormorant.variable} ${dmSans.variable} ${josefin.variable}`}
+      className={`${playfair.variable} ${cormorant.variable} ${dmSans.variable} ${josefin.variable} ${notoArabic.variable}`}
     >
       <body className="font-[family-name:var(--font-dm-sans)] bg-hob-black text-hob-white">
-        <MotionProvider>
-          <LenisProvider>
-            <Navigation />
-            {children}
-            <Footer />
-            <FloatingBookButton />
-          </LenisProvider>
-        </MotionProvider>
+        <LanguageProvider>
+          <DirApplier />
+          <MotionProvider>
+            <LenisProvider>
+              <Navigation />
+              {children}
+              <Footer />
+              <FloatingBookButton />
+            </LenisProvider>
+          </MotionProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

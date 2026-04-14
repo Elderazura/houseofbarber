@@ -73,3 +73,7 @@ body {
 
 @media (min-width: 768px)  { .section-container { padding: 0 1.5rem; } }
 @media (min-width: 1024px) { .section-container { padding: 0 2rem; } }
+
+[dir="rtl"] {
+  font-family: var(--font-arabic), 'Arial', sans-serif;
+}

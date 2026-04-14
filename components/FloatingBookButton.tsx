@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { m, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function FloatingBookButton() {
   const [visible, setVisible] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     function onScroll() {
@@ -30,7 +32,7 @@ export default function FloatingBookButton() {
           className="fixed bottom-6 right-6 z-50 md:hidden px-5 py-3 bg-hob-gold text-hob-black font-[family-name:var(--font-josefin)] text-[10px] tracking-widest uppercase shadow-lg"
           aria-label="Book via app"
         >
-          Book
+          {t.floatingBook}
         </m.button>
       )}
     </AnimatePresence>
