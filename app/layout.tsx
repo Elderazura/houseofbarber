@@ -6,6 +6,8 @@ import {
   Josefin_Sans,
 } from "next/font/google";
 import "./globals.css";
+import MotionProvider from "@/components/providers/MotionProvider";
+import LenisProvider from "@/components/providers/LenisProvider";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -72,7 +74,11 @@ export default function RootLayout({
       className={`${playfair.variable} ${cormorant.variable} ${dmSans.variable} ${josefin.variable}`}
     >
       <body className="font-[family-name:var(--font-dm-sans)] bg-hob-black text-hob-white">
-        {children}
+        <MotionProvider>
+          <LenisProvider>
+            {children}
+          </LenisProvider>
+        </MotionProvider>
       </body>
     </html>
   );
