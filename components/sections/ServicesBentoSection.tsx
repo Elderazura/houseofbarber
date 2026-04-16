@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import ScrollReveal from "@/components/motion/ScrollReveal";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
@@ -15,6 +16,7 @@ export default function ServicesBentoSection() {
       description: t.services.men.description,
       count: t.services.men.count,
       href: "/services?cat=men",
+      image: "/Banner/Barber_style.jpg",
       span: "md:col-span-2 md:row-span-2",
       gold: true,
     },
@@ -25,6 +27,7 @@ export default function ServicesBentoSection() {
       description: t.services.women.description,
       count: t.services.women.count,
       href: "/services?cat=women",
+      image: "/Banner/haircut.jpg",
       span: "",
       gold: false,
     },
@@ -35,6 +38,7 @@ export default function ServicesBentoSection() {
       description: t.services.kids.description,
       count: t.services.kids.count,
       href: "/services?cat=kids",
+      image: "/Banner/kid.jpg",
       span: "",
       gold: false,
     },
@@ -57,10 +61,20 @@ export default function ServicesBentoSection() {
             <ScrollReveal key={cat.key} preset="fadeUp" delay={i * 0.1} className={`${cat.span} h-full`}>
               <Link
                 href={cat.href}
-                className={`group flex flex-col justify-between p-7 h-full min-h-[180px] ${
+                className={`group relative isolate flex flex-col justify-between p-7 h-full min-h-[180px] overflow-hidden ${
                   cat.gold ? "bento-card-gold" : "bento-card"
                 }`}
               >
+                <div className="absolute inset-0 opacity-30 transition-opacity duration-300 group-hover:opacity-45">
+                  <Image
+                    src={cat.image}
+                    alt={`${cat.title} services`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-hob-black/65 via-hob-black/35 to-hob-black/75" />
+                </div>
                 <div>
                   <span className="font-[family-name:var(--font-josefin)] text-[9px] tracking-[0.3em] text-hob-gold uppercase block mb-3">
                     {cat.label}

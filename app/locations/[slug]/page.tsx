@@ -41,7 +41,7 @@ export default async function LocationDetailPage({
   const waUrl = buildWhatsAppUrl(
     `Hi House of Barber, I'd like to book at ${loc.name}.`
   );
-  const mapsUrl = `https://maps.google.com/?q=${encodeURIComponent(loc.address)}`;
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc.address)}`;
 
   return (
     <PageTransition>

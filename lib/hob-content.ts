@@ -42,6 +42,7 @@ export type GalleryImage = {
 export const NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
+  { label: "Coffee & Barber", href: "/coffee-barber" },
   { label: "Locations", href: "/locations" },
   { label: "Gallery", href: "/gallery" },
   { label: "About", href: "/about" },
@@ -201,6 +202,14 @@ export const SERVICES: Service[] = [
     duration: "30–45 min",
     description:
       "Clean shaping with careful, comfortable technique. We help you get a natural look that suits your features.",
+  },
+  {
+    slug: "thai-foot-massage",
+    title: "Thai Foot Massage",
+    category: "women",
+    duration: "45 min",
+    description:
+      "A pressure-point focused foot and lower-leg massage that helps ease fatigue, improve circulation, and restore lightness after long days.",
   },
   {
     slug: "bridal-styling",

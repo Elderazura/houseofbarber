@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { UAE_LOCATIONS, INDIA_LOCATIONS, NAV_ITEMS } from "@/lib/hob-content";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
@@ -14,9 +15,18 @@ export default function Footer() {
       <div className="section-container">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div>
-            <div className="font-[family-name:var(--font-cormorant)] text-2xl tracking-[0.3em] text-hob-white uppercase mb-4">
-              H O B
-            </div>
+            <Link
+              href="/"
+              className="relative mb-4 block h-16 w-16 overflow-hidden rounded-full border border-white/10"
+            >
+              <Image
+                src="/logo.png"
+                alt="House of Barber"
+                fill
+                sizes="64px"
+                className="object-cover"
+              />
+            </Link>
             <p className="text-sm text-hob-muted leading-relaxed max-w-xs">
               {t.footer.tagline}
             </p>

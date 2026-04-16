@@ -9,26 +9,55 @@ import { breadcrumbSchema } from "@/lib/jsonld";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 function LocationCard({ loc, viewDetails }: { loc: Location; viewDetails: string }) {
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc.address)}`;
+  const isCafeEnabled = loc.type.includes("Cafe");
+
   return (
-    <Link
-      href={`/locations/${loc.id}`}
-      className="bento-card group flex flex-col justify-between p-6 min-h-[180px]"
-    >
+    <article className="bento-card group flex flex-col justify-between p-6 min-h-[250px]">
       <div>
-        <span className="font-[family-name:var(--font-josefin)] text-[9px] tracking-widest text-hob-gold uppercase block mb-2">
-          {loc.type}
-        </span>
+        <div className="flex items-center justify-between gap-3 mb-2">
+          <span className="font-[family-name:var(--font-josefin)] text-[9px] tracking-widest text-hob-gold uppercase block">
+            {loc.type}
+          </span>
+          {isCafeEnabled ? (
+            <span className="font-[family-name:var(--font-josefin)] text-[8px] tracking-[0.2em] text-hob-gold uppercase px-2 py-1 border border-hob-gold/30 bg-hob-gold/5">
+              Coffee & Barber
+            </span>
+          ) : null}
+        </div>
         <h3 className="font-[family-name:var(--font-cormorant)] text-2xl font-light text-hob-white mb-2">
           {loc.name}
         </h3>
-        <p className="text-xs text-hob-muted leading-relaxed line-clamp-2">
+        <p className="text-xs text-hob-muted leading-relaxed">
           {loc.address}
         </p>
       </div>
-      <span className="font-[family-name:var(--font-josefin)] text-[9px] tracking-widest text-hob-gold uppercase mt-4 group-hover:translate-x-1 transition-transform inline-block">
-        {viewDetails}
-      </span>
-    </Link>
+
+      <div className="mt-6 flex flex-wrap gap-2">
+        <a
+          href={mapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-[family-name:var(--font-josefin)] text-[9px] tracking-widest uppercase px-3 py-2 border border-hob-gold/40 text-hob-gold hover:bg-hob-gold hover:text-hob-black transition-colors"
+        >
+          Open Map
+        </a>
+        {loc.phone ? (
+          <a
+            href={`tel:${loc.phone}`}
+            className="font-[family-name:var(--font-josefin)] text-[9px] tracking-widest uppercase px-3 py-2 border border-hob-gold/40 text-hob-gold hover:bg-hob-gold hover:text-hob-black transition-colors"
+          >
+            Call
+          </a>
+        ) : null}
+        <Link
+          href={`/locations/${loc.id}`}
+          className="font-[family-name:var(--font-josefin)] text-[9px] tracking-widest text-hob-gold uppercase px-3 py-2 border border-transparent hover:border-hob-gold/40 transition-colors"
+        >
+          {viewDetails}
+        </Link>
+      </div>
+    </article>
   );
 }
 
@@ -52,6 +81,23 @@ export default function LocationsContent() {
                 <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
               ))}
             </h1>
+          </ScrollReveal>
+
+          <ScrollReveal preset="fadeUp" delay={0.08} className="mb-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bento-card p-5">
+                <p className="font-[family-name:var(--font-cormorant)] text-3xl font-light text-hob-white">7</p>
+                <p className="font-[family-name:var(--font-josefin)] text-[9px] tracking-widest text-hob-gold uppercase mt-1">Total Branches</p>
+              </div>
+              <div className="bento-card p-5">
+                <p className="font-[family-name:var(--font-cormorant)] text-3xl font-light text-hob-white">2</p>
+                <p className="font-[family-name:var(--font-josefin)] text-[9px] tracking-widest text-hob-gold uppercase mt-1">Coffee & Barber Stores</p>
+              </div>
+              <div className="bento-card-gold p-5">
+                <p className="font-[family-name:var(--font-cormorant)] text-3xl font-light text-hob-white">24/7</p>
+                <p className="font-[family-name:var(--font-josefin)] text-[9px] tracking-widest text-hob-gold uppercase mt-1">Maps & Contact Access</p>
+              </div>
+            </div>
           </ScrollReveal>
 
           <ScrollReveal preset="fadeUp" delay={0.1} className="mb-4">

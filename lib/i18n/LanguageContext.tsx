@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState, useCallback } from "react";
+import React, { createContext, useContext, useState, useCallback } from "react";
 import { en } from "./translations/en";
 import { ar } from "./translations/ar";
 import type { Translation } from "./translations/en";
@@ -22,12 +22,11 @@ const LanguageContext = createContext<LanguageContextValue>({
 });
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocale] = useState<Locale>("en");
-
-  useEffect(() => {
+  const [locale, setLocale] = useState<Locale>(() => {
+    if (typeof window === "undefined") return "en";
     const saved = localStorage.getItem("hob-locale") as Locale | null;
-    if (saved === "ar" || saved === "en") setLocale(saved);
-  }, []);
+    return saved === "ar" || saved === "en" ? saved : "en";
+  });
 
   const toggleLocale = useCallback(() => {
     setLocale((prev) => {

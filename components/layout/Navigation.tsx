@@ -7,6 +7,7 @@ import { m, AnimatePresence } from "framer-motion";
 import { NAV_ITEMS } from "@/lib/hob-content";
 import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import Image from "next/image";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -27,8 +28,6 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => { setMobileOpen(false); }, [pathname]);
-
   return (
     <>
       <m.header
@@ -41,11 +40,15 @@ export default function Navigation() {
         }`}
       >
         <div className="section-container flex items-center justify-between h-16">
-          <Link
-            href="/"
-            className="font-[family-name:var(--font-cormorant)] text-sm tracking-[0.3em] text-hob-white uppercase"
-          >
-            H O B
+          <Link href="/" className="relative block h-10 w-10 overflow-hidden rounded-full border border-white/10">
+            <Image
+              src="/logo.png"
+              alt="House of Barber"
+              fill
+              sizes="40px"
+              className="object-cover"
+              priority
+            />
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -109,6 +112,7 @@ export default function Navigation() {
                 >
                   <Link
                     href={item.href}
+                    onClick={() => setMobileOpen(false)}
                     className={`font-[family-name:var(--font-cormorant)] text-3xl font-light transition-colors ${
                       pathname === item.href ? "text-hob-gold" : "text-hob-white"
                     }`}

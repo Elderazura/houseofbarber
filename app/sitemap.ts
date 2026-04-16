@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { UAE_LOCATIONS, INDIA_LOCATIONS } from "@/lib/hob-content";
 
 const BASE_URL = "https://www.houseofbarber.com";
+export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
