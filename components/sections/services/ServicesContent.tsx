@@ -1,6 +1,7 @@
 "use client";
 
 import { Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { SERVICES } from "@/lib/hob-content";
 import ServiceCard from "./ServiceCard";
 import FilterTabs from "./FilterTabs";
@@ -10,9 +11,11 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/jsonld";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
-function ServicesList({ cat }: { cat: string }) {
+function ServicesList() {
+  const searchParams = useSearchParams();
+  const cat = searchParams.get("cat") ?? "all";
   const filtered =
-    cat === "all" || !cat
+    cat === "all"
       ? SERVICES
       : SERVICES.filter((s) => s.category === cat);
 
@@ -27,7 +30,8 @@ function ServicesList({ cat }: { cat: string }) {
   );
 }
 
-export default function ServicesContent({ cat }: { cat: string }) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export default function ServicesContent({ cat: _cat }: { cat?: string }) {
   const { t } = useLanguage();
 
   return (
@@ -51,7 +55,9 @@ export default function ServicesContent({ cat }: { cat: string }) {
               <FilterTabs />
             </Suspense>
           </ScrollReveal>
-          <ServicesList cat={cat} />
+          <Suspense fallback={null}>
+            <ServicesList />
+          </Suspense>
         </div>
       </main>
     </PageTransition>

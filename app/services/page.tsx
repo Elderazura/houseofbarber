@@ -8,12 +8,6 @@ export const metadata: Metadata = {
   openGraph: { url: "https://www.houseofbarber.com/services" },
 };
 
-export default async function ServicesPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ cat?: string }>;
-}) {
-  const { cat = "all" } = await searchParams;
-
-  return <ServicesContent cat={cat} />;
+export default function ServicesPage() {
+  return <ServicesContent />;
 }
