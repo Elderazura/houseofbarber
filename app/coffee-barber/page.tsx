@@ -22,57 +22,116 @@ export default function CoffeeBarberPage() {
   return (
     <main className="pt-24 pb-20 min-h-screen bg-hob-black">
       <section className="section-container">
-        <div className="relative h-[58vh] min-h-[380px] overflow-hidden rounded-2xl border border-hob-gold/25">
-          <Image
-            src="/coffeenbarber/DUB00594 2.jpg"
-            alt="Coffee and Barber lounge at House of Barber"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-hob-black/30 via-hob-black/30 to-hob-black/80" />
-          <div className="absolute bottom-0 p-7 md:p-10 max-w-3xl">
-            <span className="font-[family-name:var(--font-josefin)] text-[10px] tracking-[0.3em] text-hob-gold uppercase block mb-3">
-              Coffee & Barber
-            </span>
-            <h1 className="font-[family-name:var(--font-cormorant)] text-5xl md:text-6xl font-light text-hob-white leading-tight">
-              Premium grooming meets cafe culture.
-            </h1>
-            <p className="mt-4 text-sm md:text-base text-hob-muted leading-relaxed max-w-2xl">
-              A thoughtfully designed model where your appointment and your unwind moment live in one place.
-              Grooming, coffee, conversation, and comfort - done with one premium standard.
-            </p>
+        <div className="grid grid-cols-1 lg:grid-cols-[1.08fr_0.92fr] gap-5 items-stretch">
+          <div className="relative overflow-hidden rounded-2xl border border-hob-gold/25 min-h-[420px] lg:min-h-[560px]">
+            <Image
+              src="/coffeenbarber/DUB00594 2.jpg"
+              alt="Coffee and Barber lounge at House of Barber"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 55vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-hob-black/55 via-hob-black/65 to-hob-black/92" />
+            <div className="absolute inset-x-0 bottom-0 p-7 md:p-10">
+              <div className="max-w-4xl rounded-xl bg-hob-black/55 border border-white/10 backdrop-blur-[2px] px-5 py-4 md:px-6 md:py-5">
+                <span className="font-[family-name:var(--font-josefin)] text-[10px] tracking-[0.32em] text-hob-gold uppercase block mb-3">
+                  Coffee & Barber
+                </span>
+                <h1 className="font-[family-name:var(--font-cormorant)] text-5xl md:text-6xl lg:text-7xl font-light text-hob-white leading-[0.95]">
+                  Grooming.
+                  <br />
+                  Coffee.
+                  <br />
+                  Comfort.
+                </h1>
+              </div>
+            </div>
+          </div>
+
+          <div className="bento-card-gold p-7 md:p-9 flex flex-col justify-between">
+            <div>
+              <p className="font-[family-name:var(--font-josefin)] text-[10px] tracking-[0.28em] text-hob-gold uppercase mb-4">
+                Why this model
+              </p>
+              <p className="font-[family-name:var(--font-cormorant)] text-3xl md:text-4xl font-light text-hob-white leading-tight mb-5">
+                Because premium service should feel complete, never rushed.
+              </p>
+              <p className="text-sm md:text-base text-hob-muted leading-relaxed">
+                Coffee & Barber is built for people who value detail. Your appointment, coffee, snacks,
+                and lounge time come together in one polished, customer-first experience.
+              </p>
+            </div>
+            <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <Link
+                href="/booking"
+                className="inline-flex items-center justify-center border border-hob-gold px-6 py-3 font-[family-name:var(--font-josefin)] text-[10px] tracking-[0.25em] text-hob-gold uppercase hover:bg-hob-gold hover:text-hob-black transition-all"
+              >
+                Book Now
+              </Link>
+              <Link
+                href="/locations"
+                className="inline-flex items-center justify-center border border-hob-gold/35 px-6 py-3 font-[family-name:var(--font-josefin)] text-[10px] tracking-[0.25em] text-hob-white uppercase hover:border-hob-gold hover:text-hob-gold transition-colors"
+              >
+                Find Stores
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="section-container mt-14 grid grid-cols-1 md:grid-cols-3 gap-4">
-        {[
-          {
-            title: "Why Coffee & Barber",
-            body: "Because premium service should feel complete. Not rushed in, rushed out - but a calm experience worth spending time on.",
-          },
-          {
-            title: "Customer Is King",
-            body: "From the first greeting to the final finish, every interaction is designed around comfort, respect, and personal preference.",
-          },
-          {
-            title: "More Than A Haircut",
-            body: "A destination experience with styling, coffee, snacks, and premium seating for guests and companions.",
-          },
-        ].map((item, i) => (
-          <article key={item.title} className={i === 1 ? "bento-card-gold p-6" : "bento-card p-6"}>
+      <section className="section-container mt-14">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <article className="bento-card p-6">
             <h2 className="font-[family-name:var(--font-cormorant)] text-3xl font-light text-hob-white mb-3">
-              {item.title}
+              Customer Is King
             </h2>
-            <p className="text-sm md:text-base text-hob-muted leading-relaxed">{item.body}</p>
+            <p className="text-sm md:text-base text-hob-muted leading-relaxed">
+              Every touchpoint is personalized - greeting, consultation, service execution, and post-visit care.
+            </p>
           </article>
-        ))}
+          <article className="bento-card-gold p-6">
+            <h2 className="font-[family-name:var(--font-cormorant)] text-3xl font-light text-hob-white mb-3">
+              More Service
+            </h2>
+            <p className="text-sm md:text-base text-hob-muted leading-relaxed">
+              More than haircut or beard: coffee moments, curated snacks, and lounge-grade comfort.
+            </p>
+          </article>
+          <article className="bento-card p-6">
+            <h2 className="font-[family-name:var(--font-cormorant)] text-3xl font-light text-hob-white mb-3">
+              One Premium Standard
+            </h2>
+            <p className="text-sm md:text-base text-hob-muted leading-relaxed">
+              The same level of craft and hospitality across grooming station, beverage service, and waiting spaces.
+            </p>
+          </article>
+        </div>
       </section>
 
-      <section className="section-container mt-14 grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <div className="relative min-h-[320px] overflow-hidden rounded-xl border border-hob-gold/20">
+      <section className="section-container mt-14 grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-5">
+        <div className="bento-card p-7 md:p-8">
+          <p className="font-[family-name:var(--font-josefin)] text-[10px] tracking-[0.25em] text-hob-gold uppercase mb-3">
+            Coffee & snacks
+          </p>
+          <h2 className="font-[family-name:var(--font-cormorant)] text-4xl md:text-5xl font-light text-hob-white mb-4 leading-tight">
+            Excellent coffee.
+            <br />
+            Curated snacks.
+          </h2>
+          <p className="text-sm md:text-base text-hob-muted leading-relaxed">
+            Fresh brews and cafe-grade beverages are served as part of the experience, with snacks selected
+            for guests who prefer to relax before or after service.
+          </p>
+          <div className="mt-6 grid grid-cols-2 gap-2">
+            <div className="px-3 py-2 border border-hob-gold/30 text-hob-gold text-[9px] tracking-widest uppercase text-center">Espresso</div>
+            <div className="px-3 py-2 border border-hob-gold/30 text-hob-gold text-[9px] tracking-widest uppercase text-center">Americano</div>
+            <div className="px-3 py-2 border border-hob-gold/30 text-hob-gold text-[9px] tracking-widest uppercase text-center">Cold Brew</div>
+            <div className="px-3 py-2 border border-hob-gold/30 text-hob-gold text-[9px] tracking-widest uppercase text-center">Light Bites</div>
+          </div>
+        </div>
+
+        <div className="relative min-h-[360px] overflow-hidden rounded-xl border border-hob-gold/20">
           <Image
             src="/coffeenbarber/DUB00496 2.jpg"
             alt="Coffee service at House of Barber"
@@ -81,31 +140,12 @@ export default function CoffeeBarberPage() {
             className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-hob-black/75 to-transparent" />
-          <div className="absolute bottom-0 p-6 max-w-md">
-            <h2 className="font-[family-name:var(--font-cormorant)] text-4xl font-light text-hob-white">
-              Excellent coffee.
+          <div className="absolute bottom-0 p-6 md:p-8 max-w-xl">
+            <h2 className="font-[family-name:var(--font-cormorant)] text-4xl md:text-5xl font-light text-hob-white">
+              Lounge-first atmosphere.
             </h2>
             <p className="mt-2 text-sm text-hob-muted">
-              Fresh brews and cafe-grade beverages made to complement your salon visit.
-            </p>
-          </div>
-        </div>
-
-        <div className="relative min-h-[320px] overflow-hidden rounded-xl border border-hob-gold/20">
-          <Image
-            src="/coffeenbarber/DUB00395 2.jpg"
-            alt="Snacks and lounge at Coffee and Barber"
-            fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-hob-black/75 to-transparent" />
-          <div className="absolute bottom-0 p-6 max-w-md">
-            <h2 className="font-[family-name:var(--font-cormorant)] text-4xl font-light text-hob-white">
-              Curated snacks, premium seating.
-            </h2>
-            <p className="mt-2 text-sm text-hob-muted">
-              Comfort-focused lounge spaces for waiting, relaxing, and enjoying your time in-store.
+              Premium seating and warm service pace that makes waiting feel intentional and comfortable.
             </p>
           </div>
         </div>
@@ -113,18 +153,23 @@ export default function CoffeeBarberPage() {
 
       <section className="section-container mt-14">
         <h2 className="font-[family-name:var(--font-cormorant)] text-4xl md:text-5xl font-light text-hob-white mb-6">
-          Coffee & Barber in moments
+          Inside the experience
         </h2>
-        <div className="columns-2 md:columns-3 gap-3 md:gap-4 [column-fill:_balance]">
-          {cafeGallery.map((src) => (
-            <div key={src} className="relative mb-3 md:mb-4 break-inside-avoid overflow-hidden rounded-xl border border-white/10">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+          {cafeGallery.map((src, i) => (
+            <div
+              key={src}
+              className={`relative overflow-hidden rounded-xl border border-white/10 ${
+                i === 0 ? "col-span-2 md:col-span-1 md:row-span-2" : ""
+              }`}
+            >
               <Image
                 src={src}
                 alt="Coffee and Barber in-store glimpse"
                 width={1200}
                 height={1400}
                 sizes="(max-width: 768px) 50vw, 33vw"
-                className="w-full h-auto object-cover"
+                className={`w-full object-cover ${i === 0 ? "h-[420px] md:h-full" : "h-[210px] md:h-[280px]"}`}
               />
             </div>
           ))}
@@ -161,6 +206,12 @@ export default function CoffeeBarberPage() {
               className="inline-flex items-center justify-center border border-hob-gold/35 px-6 py-3 font-[family-name:var(--font-josefin)] text-[10px] tracking-[0.25em] text-hob-white uppercase hover:border-hob-gold hover:text-hob-gold transition-colors"
             >
               Explore Services
+            </Link>
+            <Link
+              href="/booking"
+              className="inline-flex items-center justify-center border border-hob-gold/35 px-6 py-3 font-[family-name:var(--font-josefin)] text-[10px] tracking-[0.25em] text-hob-white uppercase hover:border-hob-gold hover:text-hob-gold transition-colors"
+            >
+              Book Appointment
             </Link>
           </div>
         </div>

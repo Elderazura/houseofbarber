@@ -76,10 +76,22 @@ export default function Navigation() {
               {t.nav.langToggle}
             </button>
             <Link
-              href="#app"
+              href="/booking"
               className="inline-flex items-center px-4 py-2 border border-hob-gold text-hob-gold font-[family-name:var(--font-josefin)] text-[9px] tracking-[0.2em] uppercase hover:bg-hob-gold hover:text-hob-black transition-all duration-200"
             >
               {t.nav.book}
+            </Link>
+            <Link
+              href="/login"
+              className="inline-flex items-center px-4 py-2 border border-hob-gold/35 text-hob-white font-[family-name:var(--font-josefin)] text-[9px] tracking-[0.2em] uppercase hover:border-hob-gold hover:text-hob-gold transition-all duration-200"
+            >
+              Login
+            </Link>
+            <Link
+              href="/signup"
+              className="inline-flex items-center px-4 py-2 border border-hob-gold/35 text-hob-white font-[family-name:var(--font-josefin)] text-[9px] tracking-[0.2em] uppercase hover:border-hob-gold hover:text-hob-gold transition-all duration-200"
+            >
+              Signup
             </Link>
           </div>
 
@@ -127,7 +139,8 @@ export default function Navigation() {
                 transition={{ delay: NAV_ITEMS.length * 0.05, duration: 0.3 }}
               >
                 <Link
-                  href="#app"
+                  href="/booking"
+                  onClick={() => setMobileOpen(false)}
                   className="mt-4 inline-flex items-center px-8 py-3 border border-hob-gold text-hob-gold font-[family-name:var(--font-josefin)] text-xs tracking-widest uppercase"
                 >
                   {t.nav.bookViaApp}
@@ -137,6 +150,27 @@ export default function Navigation() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: (NAV_ITEMS.length + 1) * 0.05, duration: 0.3 }}
+                className="flex gap-3"
+              >
+                <Link
+                  href="/login"
+                  onClick={() => setMobileOpen(false)}
+                  className="inline-flex items-center px-6 py-2 border border-hob-gold/35 text-hob-white font-[family-name:var(--font-josefin)] text-xs tracking-widest uppercase"
+                >
+                  Login
+                </Link>
+                <Link
+                  href="/signup"
+                  onClick={() => setMobileOpen(false)}
+                  className="inline-flex items-center px-6 py-2 border border-hob-gold/35 text-hob-white font-[family-name:var(--font-josefin)] text-xs tracking-widest uppercase"
+                >
+                  Signup
+                </Link>
+              </m.div>
+              <m.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: (NAV_ITEMS.length + 2) * 0.05, duration: 0.3 }}
               >
                 <button
                   onClick={() => { toggleLocale(); setMobileOpen(false); }}
